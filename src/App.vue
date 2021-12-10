@@ -1,26 +1,40 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <Modal v-bind:isModal="isModal" />
+  <Menu />
+  <Sales />
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import Sales from "./components/Sales.vue";
+import Menu from "./components/Menu.vue";
+import Modal from "./components/Modal.vue";
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
-  }
-}
+    Sales,
+    Menu,
+    Modal,
+  },
+  data() {
+    return {
+      isModal: false,
+    };
+  },
+};
 </script>
 
 <style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
