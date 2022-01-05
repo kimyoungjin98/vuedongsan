@@ -1,6 +1,6 @@
 <template>
   <div v-for="(sale, index) in sales" :key="index">
-    <img src="../assets/room0.jpg" class="room_img" />
+    <img src="../assets/room0.jpg" class="room_img" @click="imgClick" />
     <h4>{{ sale.products }}</h4>
     <p>{{ sale.price }} 만원</p>
     <button @click="increase(index)">허위매물신고</button
@@ -10,9 +10,7 @@
 <script>
 export default {
   name: "Sales",
-  props: {
-    isModal: Boolean,
-  },
+  props: ["imgClick"],
   data() {
     return {
       sales: [
@@ -31,6 +29,12 @@ export default {
         {
           products: "마포구원룸",
           price: "50",
+          report: 0,
+          img: "./assets/room2.jpg",
+        },
+        {
+          products: "마포구원룸",
+          price: "30",
           report: 0,
           img: "./assets/room2.jpg",
         },
