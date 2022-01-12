@@ -1,44 +1,28 @@
 <template>
+  <div class="black-bg" v-if="isModal == true">
+    <div class="white-bg">
+      <h4>상세 페이지</h4>
+      <p>상세 페이지 내용</p>
+      <button class="modal_close" @click="isModal = false">닫기</button>
+    </div>
+  </div>
   <div v-for="(sale, index) in sales" :key="index">
-    <img src="../assets/room0.jpg" class="room_img" @click="imgClick" />
-    <h4>{{ sale.products }}</h4>
-    <p>{{ sale.price }} 만원</p>
+    <img :src="sale.image" class="room_img" @click="isModal = true" />
+    <h4>{{ sale.title }}</h4>
+    <p>{{ sale.price }}</p>
     <button @click="increase(index)">허위매물신고</button
     ><span>신고수 : {{ sale.report }}</span>
   </div>
 </template>
 <script>
+import products from "../data/products";
+
 export default {
   name: "Sales",
-  props: ["imgClick"],
   data() {
     return {
-      sales: [
-        {
-          products: "역삼동원룸",
-          price: "60",
-          report: 0,
-          img: "./assets/room0.jpg",
-        },
-        {
-          products: "천호동원룸",
-          price: "40",
-          report: 0,
-          img: "./assets/room1.jpg",
-        },
-        {
-          products: "마포구원룸",
-          price: "50",
-          report: 0,
-          img: "./assets/room2.jpg",
-        },
-        {
-          products: "마포구원룸",
-          price: "30",
-          report: 0,
-          img: "./assets/room2.jpg",
-        },
-      ],
+      isModal: false,
+      sales: products,
     };
   },
   methods: {
@@ -53,5 +37,13 @@ export default {
   margin-top: 40px;
   width: 50%;
   cursor: pointer;
+}
+
+.modal_close {
+  width: 50px;
+  border: none;
+  background-color: skyblue;
+  color: white;
+  margin: 20px;
 }
 </style>

@@ -1,12 +1,6 @@
 <template>
   <Menu />
-  <Sales v-bind:imgClick="imgClick" v-bind:isModal="isModal" />
-  <div class="black-bg" v-if="isModal == true">
-    <div class="white-bg">
-      <h4>상세 페이지</h4>
-      <p>상세 페이지 내용</p>
-    </div>
-  </div>
+  <Sales />
 </template>
 
 <script>
@@ -18,16 +12,8 @@ export default {
     Sales,
     Menu,
   },
-  data() {
-    return {
-      isModal: false,
-    };
-  },
-  methods: {
-    imgClick() {
-      this.isModal = true;
-    },
-  },
+  data() {},
+  methods: {},
 };
 </script>
 
